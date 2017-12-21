@@ -1,6 +1,9 @@
 package controllers;
 
 import play.mvc.*;
+import views.html.products.list;
+import models.Product;
+import java.util.List;
 
 public class ProductController extends Controller {
 
@@ -8,7 +11,8 @@ public class ProductController extends Controller {
      * List all products
      */
     public Result list() {
-        return TODO;
+        List<Product> products = Product.findAll();
+        return ok(list.render(products));
     }
 
     /**
