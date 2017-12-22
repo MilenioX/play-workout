@@ -1,11 +1,22 @@
 package controllers;
 
-import play.mvc.*;
-import views.html.products.list;
-import models.Product;
 import java.util.List;
+import javax.inject.*;
+import play.mvc.*;
+import play.data.FormFactory;
+import play.data.Form;
+import views.html.products.list;
+import views.html.products.details;
+import models.Product;
 
 public class ProductController extends Controller {
+
+    Form<Product> productForm;
+
+    @Inject
+    public ProductController(FormFactory formFactory) {
+        this.productForm = formFactory.form(Product.class);
+    }
 
     /**
      * List all products
@@ -19,7 +30,7 @@ public class ProductController extends Controller {
      * Show a blank product form
      */
     public Result newProduct() {
-        return TODO;
+        return ok(details.render(productForm));
     }
 
     /**
