@@ -37,7 +37,13 @@ public class ProductController extends Controller {
      * Show a product edit form
      */
     public Result details(String ean) {
-        return TODO;
+        final Product product = Product.findByEan(ean);
+        if (product == null) {
+            return notFound(String.format("Product %s does not exist.", ean));
+        }
+
+        Form<Product> filledForm = productForm.fill(product);
+        return ok(details.render(filledForm));
     }
 
     /**
