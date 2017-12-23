@@ -44,6 +44,9 @@ public class ProductController extends Controller {
      * Save a product
      */
     public Result save() {
-        return TODO;
+        Form<Product> boundForm = productForm.bindFromRequest();
+        Product product = boundForm.get();
+        product.save();
+        return ok(String.format("Saved product %s", product));
     }
 }

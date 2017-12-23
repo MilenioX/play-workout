@@ -38,6 +38,30 @@ public class Product {
         return String.format("%s - %s", ean, name);
     }
 
+    public String getEan() {
+        return this.ean;
+    }
+
+    public void setEan(String ean) {
+        this.ean = ean;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public static List<Product> findAll() {
         return new ArrayList<Product>(products);
     }
