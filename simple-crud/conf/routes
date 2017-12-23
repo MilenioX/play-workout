@@ -14,3 +14,5 @@ GET     /products/new               controllers.ProductController.newProduct
 GET     /products/:ean              controllers.ProductController.details(ean: String)
 + nocsrf
 POST    /products/                  controllers.ProductController.save
++ nocsrf
+DELETE  /products/:ean              controllers.ProductController.delete(ean: String)
