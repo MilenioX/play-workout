@@ -6,6 +6,17 @@
  *@
 @(title: String)(content: Html)
 
+@if(flash.containsKey("success")) {
+    <div class="alert alert-success">
+        @flash.get("success")
+    </div>
+}
+@if(flash.containsKey("error")) {
+    <div class="alert alert-error">
+        @flash.get("error")
+    </div>
+}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
