@@ -1,0 +1,58 @@
+@(products: List[Product])
+
+@main("Products catalogue") {
+    <h2>All products</h2>
+
+    <script type="text/javascript">
+        var del = function(urlToDelete) {
+
+            var httpRequest;
+            if (window.XMLHttpRequest) {
+                httpRequest = new XMLHttpRequest();
+            }
+
+            httpRequest.open('DELETE', urlToDelete);
+            httpRequest.send(null);
+            httpRequest.onreadystatechange = function(){
+                location.reload();
+            };
+        };
+    </script>
+
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>EAN</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for(product <- products) {
+            <tr>
+                <td>
+                    <a href="@routes.ProductController.details(product.ean)">
+                        @product.ean
+                    </a>
+                </td>
+                <td>
+                    <a href="@routes.ProductController.details(product.ean)">
+                        @product.name
+                    </a>
+                </td>
+                <td>
+                    <a href="@routes.ProductController.details(product.ean)">
+                        @product.description
+                    </a>
+                </td>
+                <td>
+                    <a onclick="del('@routes.ProductController.delete(product.ean)')">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
