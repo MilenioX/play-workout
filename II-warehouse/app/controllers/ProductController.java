@@ -17,6 +17,10 @@ public class ProductController extends Controller {
     public ProductController(FormFactory formFactory) {
         this.productForm = formFactory.form(Product.class);
     }
+    
+    public Result index() {
+        return redirect(routes.ProductController.list());
+    }
 
     /**
      * List all products
