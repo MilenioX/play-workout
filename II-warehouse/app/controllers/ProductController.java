@@ -19,13 +19,13 @@ public class ProductController extends Controller {
     }
     
     public Result index() {
-        return redirect(routes.ProductController.list());
+        return redirect(routes.ProductController.list(0));
     }
 
     /**
      * List all products
      */
-    public Result list() {
+    public Result list(Integer page) {
         List<Product> products = Product.findAll();
         return ok(list.render(products));
     }
@@ -63,7 +63,7 @@ public class ProductController extends Controller {
         Product product = boundForm.get();
         product.save();
         flash("success", String.format("Successfully added product %s", product));
-        return redirect(routes.ProductController.list());
+        return redirect(routes.ProductController.list(1));
     }
 
     /**
@@ -77,6 +77,6 @@ public class ProductController extends Controller {
         }
 
         Product.remove(product);
-        return redirect(routes.ProductController.list());
+        return redirect(routes.ProductController.list(1));
     }
 }
