@@ -2,13 +2,16 @@ package controllers;
 
 import java.util.List;
 import javax.inject.*;
-import play.mvc.*;
+import play.mvc.Result;
+import play.mvc.Controller;
+import play.mvc.With;
 import play.data.FormFactory;
 import play.data.Form;
 import views.html.products.list;
 import views.html.products.details;
 import models.Product;
 
+@With(CatchAction.class)
 public class ProductController extends Controller {
 
     Form<Product> productForm;
