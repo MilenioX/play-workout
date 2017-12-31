@@ -2,6 +2,7 @@ package models;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import play.data.validation.Constraints;
 
 public class Product {
@@ -28,8 +29,9 @@ public class Product {
     @Constraints.Required
     public String name;
 
-
     public String description;
+
+    public List<Tag> tags = new LinkedList<Tag>();
 
     public Product() {
     }
@@ -66,6 +68,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Tag> getTags() {
+        return this.tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     public static List<Product> findAll() {

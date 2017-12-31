@@ -9,6 +9,19 @@
             @helper.inputText(productForm("ean"), '_label -> "EAN")
             @helper.inputText(productForm("name"), '_label -> "Name")
             @helper.textarea(productForm("descripcion"), '_label -> "Description")
+            <div>
+                <div>
+                    <input name="tags[0].id" value="1" type="checkbox"
+                      @for(i <- 0 to 2) { @if(productForm("tags[" + i + "]").value!=null
+                        && productForm("tags[" + i + "]").value == "1") { checked }}> Lightweight
+                    <input name="tags[1].id" value="2" type="checkbox"
+                      @for(i <- 0 to 2) { @if(productForm("tags[" + i + "]").value!=null
+                        && productForm("tags[" + i + "]").value == "2") { checked }} > Metal
+                    <input name="tags[2].id" value="3" type="checkbox"
+                      @for(i <- 0 to 2) { @if(productForm("tags[" + i + "]").value!=null
+                        && productForm("tags[" + i + "]").value == "3") { checked }} > Plastic
+                </div>
+            </div>
         </fieldset>
         <input type="submit" value="Save">
         <a href="@routes.ProductController.list()">Cancel</a>
