@@ -10,8 +10,10 @@ import play.data.Form;
 import views.html.products.list;
 import views.html.products.details;
 import models.Product;
+import actions.CatchAction;
+import annotations.Catch;
 
-@With(CatchAction.class)
+@Catch
 public class ProductController extends Controller {
 
     Form<Product> productForm;
